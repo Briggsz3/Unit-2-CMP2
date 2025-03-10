@@ -39,8 +39,7 @@ def main():
     restaurant3.describe_restaurant()
     restaurant3.open_restaurant()
     
-if __name__ == "__main__":
-    main()
+
 
 
 class user:
@@ -75,7 +74,7 @@ class user:
         """greets the customer"""
         print(f"Hello {self.first_name} welcome in")
 
-def main():
+def user_main():
     user1 = user("Tom", "Brady", 47, "brown")
     user2 = user("Anne","Johnson", 34, "blonde")
     user3 = user("Dwayne", "Roberts", 28, "black")
@@ -88,3 +87,9 @@ def main():
     print(" ")
     user3.describe_user()
     user3.greeting3()
+
+if __name__ == "__main__":
+    main()
+
+if __name__ == "user_main":
+    user_main()
