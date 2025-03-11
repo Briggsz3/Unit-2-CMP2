@@ -13,11 +13,11 @@ class restaurant:
         self.cuisine_type = cuisine_type
         self.number_served = number_served
 
-    def set_number_served(self):
-      print(f"We have served {self.number_served} people today")
+    def set_number_served(self,num_served:int):
+      self.number_served = num_served
 
-    #def increment_number_served(self):
-      #self.number_served+=number_served
+    def increment_number_served(self,number:int):
+      self.number_served+=number
       
     def describe_restaurant(self) -> None:
         """Describes the restaurant, name and cuisine type"""
@@ -33,6 +33,12 @@ def main():
     
     restaurant1.describe_restaurant()
     restaurant1.open_restaurant()
-    print(" ")
+    restaurant1.set_number_served(200)
+    print(restaurant1.number_served)
+    restaurant1.increment_number_served(20)
+    print(restaurant1.number_served)
+
+if __name__ == "__main__":
+    main()
 
 # self.number_served+= number_served
