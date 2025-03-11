@@ -91,5 +91,4 @@ def user_main():
 if __name__ == "__main__":
     main()
 
-if __name__ == "user_main":
-    user_main()
+user_main()
