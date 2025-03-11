@@ -46,7 +46,7 @@ if __name__ == "__main__":
 class user:
     """an attempt to create and describe a user"""
 
-    def __init__(self, first_name: str, last_name: str, age: int, hair_color: str, login_attempts:int) -> None:
+    def __init__(self, first_name: str, last_name: str, age: int, hair_color: str, login_attempts: int) -> None:
         """creates the users first and last name, age, hair color
 
         Args:
@@ -59,8 +59,15 @@ class user:
         self.last_name = last_name
         self.age = age
         self.hair_color = hair_color
+        self.login_attempts = login_attempts
+        
     def increment_login_attempts(self)->None:
         self.login_attempts+=1
+        print(f"You have attempted to login {self.login_attempts} times")
+    
+    def reset_login_attempts(self)->None:
+        self.login_attempts = 0
+        print(f"Your login attempts have been reset to {self.login_attempts}")
     
     def describe_user(self) -> None:
         """Describes the restaurant, first name, last name and description"""
@@ -78,13 +85,14 @@ class user:
         print(f"Hello {self.first_name} welcome in")
 
 def user_main():
-    user1 = user("Tom", "Brady", 47, "brown")
-    user2 = user("Anne","Johnson", 34, "blonde")
-    user3 = user("Dwayne", "Roberts", 28, "black")
+    user1 = user("Tom", "Brady", 47, "brown",2)
+    #user2 = user("Anne","Johnson", 34, "blonde")
+    #user3 = user("Dwayne", "Roberts", 28, "black")
     
     user1.describe_user()
     user1.greeting1()
-    user1.increment_login_attempts(2)
+    user1.increment_login_attempts()
+    user1.reset_login_attempts()
     print(" ")
     user2.describe_user()
     user2.greeting2()
@@ -92,3 +100,4 @@ def user_main():
     user3.describe_user()
     user3.greeting3()
 
+user_main()
