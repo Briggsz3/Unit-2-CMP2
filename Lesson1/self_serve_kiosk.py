@@ -1,19 +1,19 @@
 class Kiosk:
 
-    def __init__(self, number_items: int, total_price: float, purchase_list: dict) -> None:
-        """_summary_
+    def __init__(self) -> None:
+        """defines some of the variables in use
 
         Args:
             number_items (int): _description_
             total_price (float): _description_
             purchase_list (dict): _description_
         """
-        self.number_items = number_items
-        self.total_price = total_price
-        self.purchase_list = purchase_list
-`   purchase_list = {}
-    def add_item(self,item_name,item_price, purchase_list):
-        """_summary_
+        self.number_items = 0
+        self.total_price = 0
+        self.purchase_list = {}
+
+    def add_item(self):
+        """takes input of item and item price and plugs it into a dictionary
 
         Args:
             item_name (str): name of item
@@ -21,31 +21,32 @@ class Kiosk:
             purchase_list (dict): dictionary list containing the item names and item prices
         """
         while True:
-            item_name = input("Please enter your item, if you do not have any more items to scan enter 'none':")
-            if item_name != "none":
+            item_name = input("Please enter your item, if you do not have any more items to scan enter '1': ")
+            if item_name == '1':
+                break
+            else:
                 item_price = float(input("What is the price of your item: "))
                 self.purchase_list[item_name] = item_price
-                print(purchase_list)
+                print(self.purchase_list)
                 # maybe try creating a dictionary with the items and prices and then printing them out.
-            else:
-                break
-    def get_total(self,purchase_list, total_price: int):
+        pass
+    def get_total(self):
         """ gets the total value of all items purchased
 
         Args:
             purchase_list (dict): dictionary containing the users purchases and their costs
             total_price (int): adds together all the values on the dictionary
         """
-        total_price = sum(purchase_list.values())
+        total_price = sum(self.purchase_list.values())
+        print(total_price)
         total_price = round(total_price,2)
-        self.add_item()
-    def take_payment(self,pay, total_price, remaining):
+    def take_payment(self, total_price):
         """asks the user how much they are paying, subtracts it from the total price
         then runs it through a function to check that they payed enough
         """
         print(f"You owe ${total_price}")
         while True:
-            pay= float(input("How much do you want to pay"))
+            pay= float(input("How much do you want to pay: "))
             remaining = total_price - pay
             remaining = round(total_price,2)
             if remaining > 0:
@@ -67,20 +68,29 @@ class Kiosk:
             remaining = round(remaining,2)
             print(f"You're change is ${remaining}")
             print("Have a great day")
-    def finalize_transaction(self, finalize, dictionary_len):
+    def finalize_transaction(self):
         """prints out the change and pay function
         """
-        finalize = int(input("Would you like to finalize the transaction 1) yes, 2) no"))
-        if finalize == 1:
-            dictionary_len = len(purchase_list)
-            print(f"You bought {dictionary_len} items today")
-            get_total(self,purchase_list, total_price: int)
-            take_payment(self,pay, total_price, remaining)
-            give_change(self, remaining)
-        else: 
-            add_item(self,item_name,item_price, purchase_list)
+        while True: 
+            finalize = int(input("Would you like to finalize the transaction 1) yes, 2) no: "))
+            if finalize == 1:
+                dictionary_len = len(self.purchase_list)
+                print(f"You bought {dictionary_len} items today")
+                self.get_total()
+                self.take_payment(self.total_price)
+                self.give_change()
+            else: 
+                self.add_item()
+                continue
+def main():
+    Kiosk1=Kiosk()
+    Kiosk1.add_item()
+    Kiosk1.finalize_transaction()
+        
     
 
+if __name__ == "__main__":
+    main()
 # How do you get to print out the main for testing and finality purposes.
 # create a dictionary when the person adds the price and item
 # sum of dictionary for the total price
