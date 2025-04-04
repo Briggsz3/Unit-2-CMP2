@@ -1,4 +1,4 @@
-import Car
+from car import Car
 
 class ElectricCar(Car):
     def __init__(self, make, model, year, battery_level):
