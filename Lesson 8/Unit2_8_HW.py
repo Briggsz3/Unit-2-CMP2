@@ -60,27 +60,32 @@ class Lottery:
         print(f"Anyone with this ticket {self.ticket_winner} will win a prize") 
     
     def user_ticket(self):
+        self.ticket_number = 0
         while True:
+            self.my_ticket = []
             for z in range (8):
                 self.random_value = random.randint(0,14)
                 self.my_ticket.append(self.lottery_list[self.random_value])
+            print(self.my_ticket)
+            self.ticket_number =  self.ticket_number + 1 
             if self.my_ticket == self.ticket_winner:
                 print(" ")
                 print("Congrats you've won the prize!")
                 print(f"You had to have {self.ticket_number} tickets")
+                break
             else:
-                self.ticket_number =+ 1
+                print(self.ticket_number)
+                continue
             
 
 
 
 def main1():
-    lottery1 = Lottery(" ", " ", " ", " ")
+    lottery1 = Lottery(" ", " ", " ", " ", " ")
     lottery1.winning_ticket()
     lottery1.user_ticket()
 
 if __name__ == "__main__":
     main1()
-
 
 
