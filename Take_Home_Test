@@ -1,0 +1,77 @@
+class Pizza:
+    
+    pizzas_ordered = 0
+    
+    def __init__(self, flavor_profile, price = 14, toppings = 'nothing', size = '14in'):
+        self.toppings = toppings
+        self._size = size
+        self.price = price
+        self.flavor_profile = flavor_profile
+        
+    def __repr__(self):
+        return f"You ordered a {self._size} pizza with {self.toppings} on it, which will cost ${self.price}"
+        
+    def __eq__(self, other):
+        return self.toppings == other.toppings and \
+        self._size == other._size and \
+        self.price == other.price and \
+        self.flavor_profile == other.flavor_profile
+        
+    def __add__(self,other):
+        return self.price + other.price
+        # might need to put Pizza() around the self.price + 
+        # other.price
+    
+
+    def order(self, pizzas_ordered):
+        print(" ")
+        pizzas_ordered+=1
+        return f"Your order consists of {pizzas_ordered} pizzas fir {self.name}"
+    
+    def size_change(self, new_size):
+        self._size = new_size
+        print(" ")
+        print(f"The pizza size has been changed to a {self._size} pizza")
+        
+    
+
+
+class MeatLovers(Pizza):
+    
+    def __init__(self, price: float, flavor_profile, toppings = 'sausage, pepperoni, ham and bacon', size = '16in'):
+        self.toppings = toppings
+        self._size = size
+        self.price = price
+        self.flavor_profile = flavor_profile
+        
+    def pizza_description(self):
+        return f"For those who are {self.flavor_profile}. Loaded with 4 different types of meat."
+
+def main():
+    Pizza1 = Pizza('basic cheese lover', 15, 'cheese', '12in')
+    Pizza2 = Pizza('spicy mixed with sweet honey', 16, 'honey and soppressata', '14in')
+    print(Pizza1)
+    Pizza1.size_change('14in')
+    print(" ")
+    Pizza3 = MeatLovers(17, 'carnivore', 'sausage and pepperoni', '14in')
+    print(Pizza3)
+    print(" ")
+    
+    if Pizza1 == Pizza2 or Pizza1 == Pizza3 or Pizza2 == Pizza3:
+        print("You have two pizzas that are the same")
+    elif Pizza1 == Pizza2 and Pizza1 == Pizza3:
+        print("You have ordered 3 of the same pizzas")
+    else:
+        print("You have ordered all different types of pizza")
+    print(" ")
+    
+    Pizza4 = Pizza1.price + Pizza2.price + Pizza3.price
+    print(Pizza4)
+    
+    
+    # Pizza1.order(pizzas_ordered)
+    
+if __name__ == "__main__":
+    main()
+    
+    
